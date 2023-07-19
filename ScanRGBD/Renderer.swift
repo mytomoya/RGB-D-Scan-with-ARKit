@@ -72,7 +72,7 @@ class Renderer: NSObject {
     
     var delegate: StatusLogDelegate?
     // Save every `saveSpan` frames
-    let saveSpan: Int = 1
+    let saveSpan: Int = 2
     var frameCount = 0
     
     init(metalView: MTKView, session: ARSession, depthImageView: UIImageView, directoryID: Int) {
