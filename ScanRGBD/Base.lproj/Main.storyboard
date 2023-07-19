@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ColoredPointCloud" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" opaque="NO" contentMode="scaleToFill" id="8bC-Xf-vdC" customClass="MTKView">
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="d3I-ci-cPB">
+                                <rect key="frame" x="33" y="57" width="362" height="32"/>
+                                <color key="backgroundColor" systemColor="systemFillColor"/>
+                                <segments>
+                                    <segment title="Camera Image"/>
+                                    <segment title="Depth Map"/>
+                                    <segment title="Confidence Map"/>
+                                </segments>
+                                <color key="selectedSegmentTintColor" systemColor="linkColor"/>
+                                <connections>
+                                    <action selector="renderModeSegmentedControlTapped:" destination="BYZ-38-t0r" eventType="valueChanged" id="uA2-NT-wQy"/>
+                                </connections>
+                            </segmentedControl>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5D6-Ri-XSR">
+                                <rect key="frame" x="0.0" y="100" width="428" height="826"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jwc-Fi-AAq">
+                                <rect key="frame" x="0.0" y="780.66666666666663" width="428" height="101.33333333333337"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="3GH-83-UjF">
+                                        <rect key="frame" x="20" y="20.000000000000004" width="388" height="61.333333333333343"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zSZ-Li-Grx">
+                                                <rect key="frame" x="0.0" y="13.666666666666742" width="78.333333333333329" height="34.333333333333336"/>
+                                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.34818771259999998" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Save"/>
+                                                <connections>
+                                                    <action selector="saveButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uPK-O7-QdX"/>
+                                                </connections>
+                                            </button>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="BRr-T5-HNA">
+                                                <rect key="frame" x="127.00000000000001" y="0.0" width="134.33333333333337" height="61.333333333333336"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show Point Cloud" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ajn-AS-LiY">
+                                                        <rect key="frame" x="0.0" y="0.0" width="134.33333333333334" height="20.333333333333332"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ocA-WS-4r3">
+                                                        <rect key="frame" x="42.666666666666657" y="30.333333333333371" width="51" height="31"/>
+                                                        <connections>
+                                                            <action selector="visualizationSwitchTapped:" destination="BYZ-38-t0r" eventType="valueChanged" id="p6b-39-Nb0"/>
+                                                        </connections>
+                                                    </switch>
+                                                </subviews>
+                                            </stackView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kHY-yo-Slo">
+                                                <rect key="frame" x="309.66666666666669" y="13.666666666666742" width="78.333333333333314" height="34.333333333333336"/>
+                                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.34818771259999998" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Record"/>
+                                                <connections>
+                                                    <action selector="toggleSaveButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uLi-g9-Xpe"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="BRr-T5-HNA" firstAttribute="centerX" secondItem="3GH-83-UjF" secondAttribute="centerX" id="Mg7-in-bqO"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.34818771259999998" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstItem="3GH-83-UjF" firstAttribute="centerX" secondItem="jwc-Fi-AAq" secondAttribute="centerX" id="ScT-w1-HuB"/>
+                                    <constraint firstAttribute="trailing" secondItem="3GH-83-UjF" secondAttribute="trailing" constant="20" id="mDT-Me-15K"/>
+                                    <constraint firstItem="3GH-83-UjF" firstAttribute="leading" secondItem="jwc-Fi-AAq" secondAttribute="leading" constant="20" id="sZh-yj-99z"/>
+                                    <constraint firstItem="3GH-83-UjF" firstAttribute="centerY" secondItem="jwc-Fi-AAq" secondAttribute="centerY" id="vOV-rI-9yx"/>
+                                </constraints>
+                            </view>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Frames saved 0/0" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gMD-8b-ve1" userLabel="LogText">
+                                <rect key="frame" x="33" y="98" width="143" height="34"/>
+                                <color key="backgroundColor" systemColor="placeholderTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <constraints>
+                            <constraint firstItem="5D6-Ri-XSR" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="1pO-Ql-Q7y"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="jwc-Fi-AAq" secondAttribute="bottom" constant="10" id="Bzs-Ov-92t"/>
+                            <constraint firstItem="5D6-Ri-XSR" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="100" id="DQE-rl-Cwa"/>
+                            <constraint firstAttribute="bottom" secondItem="5D6-Ri-XSR" secondAttribute="bottom" id="E9m-U9-DBs"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="jwc-Fi-AAq" secondAttribute="bottom" constant="10" id="IKX-ct-z23"/>
+                            <constraint firstItem="5D6-Ri-XSR" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="IWc-ON-tiZ"/>
+                            <constraint firstItem="gMD-8b-ve1" firstAttribute="leading" secondItem="d3I-ci-cPB" secondAttribute="leading" id="M8z-QI-Bwy"/>
+                            <constraint firstItem="jwc-Fi-AAq" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="780.66666666666652" id="MUd-fm-qNe"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="jwc-Fi-AAq" secondAttribute="trailing" id="Sx3-Fn-vhg"/>
+                            <constraint firstItem="gMD-8b-ve1" firstAttribute="top" secondItem="d3I-ci-cPB" secondAttribute="bottom" constant="10" id="TML-Md-cA6"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="5D6-Ri-XSR" secondAttribute="trailing" id="VEW-qi-9xZ"/>
+                            <constraint firstItem="jwc-Fi-AAq" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Vep-0B-KhE"/>
+                            <constraint firstItem="d3I-ci-cPB" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="htp-BX-Rh7"/>
+                            <constraint firstItem="d3I-ci-cPB" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="kB3-7Q-g7D"/>
+                            <constraint firstItem="jwc-Fi-AAq" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="yG6-ey-6rK"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="depthImageView" destination="5D6-Ri-XSR" id="Sgr-lx-Ayy"/>
+                        <outlet property="logTextField" destination="gMD-8b-ve1" id="Gwb-EZ-LCU"/>
+                        <outlet property="recordButton" destination="kHY-yo-Slo" id="iXG-wY-Sa1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="19.626168224299064" y="93.952483801295898"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="linkColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="placeholderTextColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29803921568627451" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemFillColor">
+            <color red="0.47058823529411764" green="0.47058823529411764" blue="0.50196078431372548" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
