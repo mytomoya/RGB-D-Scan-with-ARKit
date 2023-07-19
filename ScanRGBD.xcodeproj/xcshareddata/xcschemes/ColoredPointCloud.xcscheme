@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "498A76C32816777300665CA3"
-               BuildableName = "ScanRGB-D.app"
+               BuildableName = "ScanRGBD.app"
                BlueprintName = "ScanRGBD"
                ReferencedContainer = "container:ScanRGBD.xcodeproj">
             </BuildableReference>
@@ -45,7 +45,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "498A76C32816777300665CA3"
-            BuildableName = "ScanRGB-D.app"
+            BuildableName = "ScanRGBD.app"
             BlueprintName = "ScanRGBD"
             ReferencedContainer = "container:ScanRGBD.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "498A76C32816777300665CA3"
-            BuildableName = "ScanRGB-D.app"
+            BuildableName = "ScanRGBD.app"
             BlueprintName = "ScanRGBD"
             ReferencedContainer = "container:ScanRGBD.xcodeproj">
          </BuildableReference>

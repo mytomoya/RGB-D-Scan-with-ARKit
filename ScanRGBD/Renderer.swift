@@ -71,6 +71,9 @@ class Renderer: NSObject {
     var directoryID: Int
     
     var delegate: StatusLogDelegate?
+    // Save every `saveSpan` frames
+    let saveSpan: Int = 1
+    var frameCount = 0
     
     init(metalView: MTKView, session: ARSession, depthImageView: UIImageView, directoryID: Int) {
         guard let device = MTLCreateSystemDefaultDevice(),
@@ -181,7 +184,8 @@ class Renderer: NSObject {
         parameters.intrinsic = camera.intrinsics
         parameters.viewMatrix = camera.viewMatrix(for: .portrait)
         
-        if ViewController.isRecording {
+        frameCount += 1
+        if ViewController.isRecording && frameCount % saveSpan == 0  {
             saveFiles(frame: frame)
         }
         
